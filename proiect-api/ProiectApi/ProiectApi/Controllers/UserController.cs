@@ -65,5 +65,43 @@ namespace ProiectApi.Controllers
                 });
             }
         }
+
+        [HttpPost("login")]
+        [ProducesResponseType(typeof(UserViewModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Login([FromBody] LoginUserRequest loginUser)
+        {
+            try
+            {
+                var result = await _userService.Login(_map.Map<LoginUserDto>(loginUser));
+                return Ok(_map.Map<UserViewModel>(result));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new
+                {
+                    message = ex.Message,
+                });
+            }
+        }
+
+        [HttpPost("register")]
+        [ProducesResponseType(typeof(UserViewModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Register([FromBody] RegisterUserRequest registerUser)
+        {
+            try
+            {
+                var result = await _userService.Register(_map.Map<RegisterUserDto>(registerUser));
+                return Ok(_map.Map<UserViewModel>(result));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new
+                {
+                    message = ex.Message,
+                });
+            }
+        }
     }
 }
