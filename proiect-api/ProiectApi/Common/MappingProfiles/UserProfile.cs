@@ -11,6 +11,10 @@ namespace Common.MappingProfiles
         {
             CreateMap<UserViewModel, UserDto>().ReverseMap();
             CreateMap<UserDto, User>().ReverseMap();
+            CreateMap<RegisterUserRequest, RegisterUserDto>();
+            CreateMap<RegisterUserDto, User>();
+            CreateMap<RegisterUserDto, UserDto>();
+            CreateMap<LoginUserRequest, LoginUserDto>();
         }
     }
 }
