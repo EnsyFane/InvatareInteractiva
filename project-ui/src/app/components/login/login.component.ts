@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { LoginUser } from 'src/app/data-types/login-user';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +19,16 @@ export class LoginComponent implements OnInit {
 
   errorMessage: string = " ";
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService) { }
 
 
   ngOnInit(): void {
   }
 
-  onSubmit(): void {}
+  onSubmit(): void {
+    let loginUser: LoginUser = {email: this.form.value.email, password: this.form.value.password};
+    // console.log(loginUser);
+    this.loginService.login(loginUser);
+  }
 
 }
