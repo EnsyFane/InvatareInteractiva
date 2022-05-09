@@ -1,0 +1,34 @@
+:host {
+  display: flex;
+}
+
+.header-container {
+  width: 100%;
+  height: 50px;
+  background: #2424f6;
+  display: flex;
+}
+
+.header-logo {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.link {
+  margin: auto 0 auto 0;
+  font-family: Calibri, serif;
+}
+
+.header-button {
+  height: 100%;
+  display: flex;
+  padding-left: 10px;
+  cursor: pointer;
+  margin-right: 10px;
+  color: #fff;
+  border-left: 1px solid #fff;
+}
+
+.header-button span {
+  margin: auto 0;
+}
