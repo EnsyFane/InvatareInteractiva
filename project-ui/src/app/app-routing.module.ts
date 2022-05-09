@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from "./home/home.component";
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
-const routes: Routes = [{
+export const routes: Routes = [{
   path: '',
-  component: HomeComponent,
+  redirectTo: '/login',
+  pathMatch: 'full'
+}, {
+  path: 'home',
+  component: HomeComponent
+}, {
+  path: 'login',
+  component: LoginComponent
 }, {
   path: 'knowledge',
   //TODO add each component for it's specific route, also don't forget to
@@ -12,19 +20,19 @@ const routes: Routes = [{
   component: HomeComponent
 }, {
   path: 'quizzes',
-  component: HomeComponent
+    component: HomeComponent
 }, {
   path: 'flashcards',
-  component: HomeComponent
+    component: HomeComponent
 }, {
   path: 'notes',
-  component: HomeComponent
+    component: HomeComponent
 }, {
   path: 'leaderboards',
-  component: HomeComponent
+    component: HomeComponent
 }, {
   path: 'friends',
-  component: HomeComponent
+    component: HomeComponent
 }];
 
 @NgModule({

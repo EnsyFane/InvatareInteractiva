@@ -1,0 +1,65 @@
+.title-section{
+    width: 60%;
+    height: 99%;
+    background: linear-gradient(0deg,darkblue,blue);
+    display: inline-block;
+    overflow: auto;
+}
+
+.title {
+    width: 70%;
+    margin-top: 30%;
+    margin-left: 10%;
+    font-size: 3vw;
+    font-weight: bold;
+    color: white;
+}
+
+.subtitle {
+    width: 70%;
+    margin-top: 2%;
+    margin-left: 10%;
+    font-size: 1.2vw;
+    font-weight: thin !important;
+    color: white;
+}
+
+.change-button{
+    margin-left: 10%;
+    margin-top: 5%;
+    width: 20%;
+    border-radius: 25px;
+    background-color: #035efc;
+    color: white;
+}
+
+.form-section{
+    width: 40%;
+    height: 99%;
+    display: inline-block;
+    overflow: auto;
+}
+
+form {
+    margin-top: 30%;
+    margin-left: 10%;
+    width: 80%;
+}
+
+h2 {
+    margin-bottom: 10%;
+}
+
+.login-button{
+    margin: 10% 0;
+    margin-left: 5%;
+    width: 45%;
+    border-radius: 25px;
+    background-color: darkblue;
+    color: white;
+}
+
+.field{
+    margin-left: 7%;
+    width: 40%;
+}
