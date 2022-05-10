@@ -13,14 +13,7 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login(loginUser: LoginUser): void {
-    this.httpClient.post(this.url, {email: loginUser.email, password: loginUser.password}).subscribe({
-      next: data => {
-          console.log(data);
-      },
-      error: error => {
-          console.log('There was an error!'+error.errorMessage);
-      }
-  });
+  login(loginUser: LoginUser): Observable<any> {
+    return this.httpClient.post(this.url, loginUser);
   }
 }

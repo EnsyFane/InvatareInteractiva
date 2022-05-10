@@ -17,13 +17,15 @@ import { MatInputModule } from '@angular/material/input';
 import { LoginService } from './services/login.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { PopupComponent } from './components/popup/popup.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,
