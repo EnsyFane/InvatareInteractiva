@@ -28,6 +28,7 @@ namespace ProiectApi
 
             services.AddAutoMapper(typeof(UserProfile));
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IQuizService, QuizService>();
             services.AddCors();
 
         }
