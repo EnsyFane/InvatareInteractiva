@@ -61,8 +61,13 @@ namespace Services
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == userDto.Email);
 
+            if (user == null)
+            {
+                return null;
+            }
+
             var hashedPassword = new PasswordHasher<object?>().HashPassword(null, userDto.Password);
-            var passwordVerificationResult = new PasswordHasher<object?>().VerifyHashedPassword(null, hashedPassword, userDto.Password);
+            var passwordVerificationResult = new PasswordHasher<object?>().VerifyHashedPassword(null, hashedPassword, user.HashedPassword);
 
             if (passwordVerificationResult == PasswordVerificationResult.Success)
             {
