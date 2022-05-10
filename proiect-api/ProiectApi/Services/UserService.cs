@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Common.DTOs;
 using Common.Entities;
 using DataPersistence;
-using Microsoft.AspNetCore.Identity;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Services
 {
@@ -48,7 +49,7 @@ namespace Services
             }
             var user = _map.Map<User>(userDto);
 
-            var hashedPassword = new PasswordHasher<object?>().HashPassword(null, userDto.Password);
+            var hashedPassword = ComputeSha256Hash(userDto.Password);
             user.HashedPassword = hashedPassword;
 
             await _context.Users.AddAsync(user);
@@ -66,15 +67,37 @@ namespace Services
                 return null;
             }
 
-            var hashedPassword = new PasswordHasher<object?>().HashPassword(null, userDto.Password);
-            var passwordVerificationResult = new PasswordHasher<object?>().VerifyHashedPassword(null, hashedPassword, user.HashedPassword);
+            var hashedPassword = ComputeSha256Hash(userDto.Password);
 
-            if (passwordVerificationResult == PasswordVerificationResult.Success)
+            var matched = false;
+            if(user.HashedPassword == hashedPassword)
+            {
+                matched = true;
+            }
+
+            if (matched)
             {
                 return _map.Map<UserDto>(user);
             }
             return null;
         }
 
+        private static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
     }
 }
