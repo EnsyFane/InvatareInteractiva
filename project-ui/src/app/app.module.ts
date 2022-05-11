@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { HeaderComponent } from "./components/header/header.component";
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,7 +26,8 @@ import { PopupComponent } from './components/popup/popup.component';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    PopupComponent
+    PopupComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
