@@ -1,6 +1,5 @@
-export interface Flashcard {
+export interface Chapter {
     id: number;
     title: string;
     text: string;
-    quizzId: number;
 }
