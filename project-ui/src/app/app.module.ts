@@ -19,6 +19,7 @@ import { LoginService } from './services/login.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { PopupComponent } from './components/popup/popup.component';
+import { QuizzComponent } from './components/quiz/quiz.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { PopupComponent } from './components/popup/popup.component';
     HomeComponent,
     LoginComponent,
     PopupComponent,
-    HeaderComponent
+    HeaderComponent,
+    QuizzComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { PopupComponent } from './components/popup/popup.component';
     MatIconModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
