@@ -1,10 +1,10 @@
 ﻿
 namespace Common.DTOs
 {
-    public class QuizDto
+    public class StickyNoteDto
     {
         public int Id { get; set; }
+        public string Text { get; set; }
         public int NoChapter { get; set; }
-        public List<QuestionDto> Questions { get; set; }
     }
 }

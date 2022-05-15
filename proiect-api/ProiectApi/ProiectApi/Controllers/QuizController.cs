@@ -19,10 +19,10 @@ namespace ProiectApi.Controllers
         }
 
         [HttpGet("{noChapter}")]
-        [ProducesResponseType(typeof(List<QuizViewModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(QuizViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetQuiz([FromRoute] string noChapter)
+        public async Task<IActionResult> GetQuiz([FromRoute] int noChapter)
         {
 
             try

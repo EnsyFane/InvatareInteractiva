@@ -8,7 +8,7 @@ namespace Services
     #region interface
     public interface IQuizService
     {
-        Task<QuizDto> GetQuiz(string noChapter);
+        Task<QuizDto> GetQuiz(int noChapter);
     }
     #endregion
 
@@ -23,7 +23,7 @@ namespace Services
             _map = map;
         }
 
-        public async Task<QuizDto> GetQuiz(string noChapter)
+        public async Task<QuizDto> GetQuiz(int noChapter)
         {
             var quiz = _map.Map<QuizDto>(await _context.Quizzes.FirstOrDefaultAsync(x => x.NoChapter == noChapter));
             var questions = _map.Map<List<QuestionDto>>(await _context.Questions.Where(x => x.Quiz.Id == quiz.Id).ToListAsync());
