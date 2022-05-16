@@ -22,6 +22,10 @@ import { PopupComponent } from './components/popup/popup.component';
 import { ChapterPageComponent } from './components/chapter-page/chapter-page.component';
 import { ChapterComponent } from './components/chapter/chapter.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ToastrModule } from 'ngx-toastr';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 
 @NgModule({
@@ -33,6 +37,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HeaderComponent,
     ChapterPageComponent,
     ChapterComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ModalModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+  AccordionModule.forRoot(),
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

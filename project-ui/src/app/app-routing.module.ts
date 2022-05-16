@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChapterPageComponent } from './components/chapter-page/chapter-page.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 export const routes: Routes = [{
   path: '',
@@ -21,7 +22,7 @@ export const routes: Routes = [{
   component: ChapterPageComponent
 }, {
   path: 'quizzes',
-    component: HomeComponent
+    component: QuizComponent
 }, {
   path: 'flashcards',
     component: HomeComponent
