@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { ChapterComponent } from './components/chapter/chapter.component';
-
 
 export const routes: Routes = [{
   path: '',
@@ -19,7 +17,7 @@ export const routes: Routes = [{
   path: 'knowledge',
   //TODO add each component for it's specific route, also don't forget to
   // add the generic header component to each one of them
-  component: ChapterComponent
+  component: HomeComponent
 }, {
   path: 'quizzes',
     component: HomeComponent
