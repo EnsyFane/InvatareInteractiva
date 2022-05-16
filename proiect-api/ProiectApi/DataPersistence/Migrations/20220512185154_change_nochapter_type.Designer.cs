@@ -3,6 +3,7 @@ using DataPersistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataPersistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220512185154_change_nochapter_type")]
+    partial class change_nochapter_type
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,7 +94,7 @@ namespace DataPersistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("NoChapter")
+                    b.Property<int>("QuizId")
                         .HasColumnType("int");
 
                     b.Property<string>("Text")
@@ -100,6 +102,8 @@ namespace DataPersistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("QuizId");
 
                     b.ToTable("StickyNotes");
                 });
@@ -163,6 +167,17 @@ namespace DataPersistence.Migrations
                     b.Navigation("Quiz");
                 });
 
+            modelBuilder.Entity("Common.Entities.StickyNote", b =>
+                {
+                    b.HasOne("Common.Entities.Quiz", "Quiz")
+                        .WithMany("StickyNotes")
+                        .HasForeignKey("QuizId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Quiz");
+                });
+
             modelBuilder.Entity("Common.Entities.Question", b =>
                 {
                     b.Navigation("Answers");
@@ -171,6 +186,8 @@ namespace DataPersistence.Migrations
             modelBuilder.Entity("Common.Entities.Quiz", b =>
                 {
                     b.Navigation("Questions");
+
+                    b.Navigation("StickyNotes");
                 });
 #pragma warning restore 612, 618
         }
