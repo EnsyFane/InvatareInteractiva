@@ -19,6 +19,9 @@ import { LoginService } from './services/login.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { PopupComponent } from './components/popup/popup.component';
+import { ChapterPageComponent } from './components/chapter-page/chapter-page.component';
+import { ChapterComponent } from './components/chapter/chapter.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -27,7 +30,9 @@ import { PopupComponent } from './components/popup/popup.component';
     HomeComponent,
     LoginComponent,
     PopupComponent,
-    HeaderComponent
+    HeaderComponent,
+    ChapterPageComponent,
+    ChapterComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { PopupComponent } from './components/popup/popup.component';
     MatIconModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
