@@ -1,0 +1,15 @@
+.afisare-capitole li{
+    list-style: none;
+}
+
+.controls-container{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    margin-right: 20px;
+}
+
+.chapter-page-container{
+    margin-right: 5vw;
+    margin-top: 8vh;
+}

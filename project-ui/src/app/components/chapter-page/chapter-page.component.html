@@ -1,0 +1,16 @@
+<header></header>
+
+<div class="chapter-page-container">
+    <ul class="afisare-capitole">
+        <li *ngFor='let item of chapters | paginate: { itemsPerPage: 1, currentPage: p, totalItems: totalLength }'> 
+            <app-chapter [chapter]="item"></app-chapter>
+        </li>
+        
+        <!-- <app-chapter [chapter]={{item}}></app-chapter> -->
+    </ul>
+    <div class="controls-container">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
+
+
