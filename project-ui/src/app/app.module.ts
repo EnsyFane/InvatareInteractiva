@@ -19,6 +19,9 @@ import { LoginService } from './services/login.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { PopupComponent } from './components/popup/popup.component';
+import { ChapterPageComponent } from './components/chapter-page/chapter-page.component';
+import { ChapterComponent } from './components/chapter/chapter.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
@@ -32,6 +35,8 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     LoginComponent,
     PopupComponent,
     HeaderComponent,
+    ChapterPageComponent,
+    ChapterComponent,
     QuizComponent
   ],
   imports: [
@@ -46,6 +51,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     ModalModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
