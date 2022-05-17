@@ -19,6 +19,10 @@ import { LoginService } from './services/login.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { PopupComponent } from './components/popup/popup.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ToastrModule } from 'ngx-toastr';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 
 @NgModule({
@@ -27,7 +31,8 @@ import { PopupComponent } from './components/popup/popup.component';
     HomeComponent,
     LoginComponent,
     PopupComponent,
-    HeaderComponent
+    HeaderComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,11 @@ import { PopupComponent } from './components/popup/popup.component';
     MatIconModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+  AccordionModule.forRoot(),
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
