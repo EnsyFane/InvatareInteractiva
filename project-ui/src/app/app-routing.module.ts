@@ -27,7 +27,7 @@ export const routes: Routes = [{
   // add the generic header component to each one of them
   component: ChapterPageComponent
 }, {
-  path: 'quizzes',
+  path: 'quizzes/:id',
     component: QuizComponent
 }, {
   path: 'flashcards',

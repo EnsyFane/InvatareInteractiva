@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { QuestionClass } from './question-class';
 import { ToastrService } from 'ngx-toastr';
 import { QuizService } from 'src/app/services/quiz.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-	selector: 'app-root',
+	selector: 'app-quizzes',
 	templateUrl: './quiz.component.html',
 	styleUrls: ['./quiz.component.css']
 })
@@ -21,15 +21,19 @@ export class QuizComponent implements OnInit {
 	@ViewChild('questionForm') questionForm: any;
 	@ViewChild('questionTest') questionTest : any;
 
-	constructor( private toastr: ToastrService, private quizService: QuizService) { }
+	@Input() inputNumber: number | undefined;
 
-	answerArray = [];
+	constructor( private toastr: ToastrService, private quizService: QuizService, private route: ActivatedRoute) { }
 
-	importedQuestions: any = this.quizService.getQuiz(1)
+	allQuestions: any = [];
+
+	id = this.route.snapshot.paramMap.get('id');
+
+	importedQuestions: any = this.quizService.getQuiz(Number(this.id))
 	.subscribe(
         (response) => {                           //next() callback
           console.log('response received', response)
-		  this.importedQuestions = response;
+		  this.allQuestions = response.questions;
         },
         (error) => {                              //error() callback
           console.error('Request failed with error')
@@ -37,35 +41,6 @@ export class QuizComponent implements OnInit {
         () => {                                   //complete() callback
           console.error('Request completed')      //This is actually not needed 
         })
-
-	allQuestions: any = [{
-		"id": 1,
-		"question": "What is the capital of Belgium?",
-		"a": "Vienna",
-		"b": "Berlin",
-		"c": "Brussels",
-		"d": "Prague",
-		"answer": "c"
-	},
-	{
-		"id": 2,
-		"question": "What is the capital of Australia?",
-		"a": "Vienna",
-		"b": "Canberra",
-		"c": "Brussels",
-		"d": "Prague",
-		"answer": "b"
-	},
-	{
-		"id": 3,
-		"question": "What is the capital of Bulgaria?",
-		"a": "Vienna",
-		"b": "Sofia",
-		"c": "Brussels",
-		"d": "Prague",
-		"answer": "b"
-	}
-	];
 
 	/**Method call on submit the test */
 	submitTest() {
@@ -85,7 +60,7 @@ export class QuizComponent implements OnInit {
 	}
 
 	startQuiz() {
-		console.log(this.importedQuestions);
+		console.log(this.allQuestions);
 		console.log("!!!!!!!!!!!!!!!!!!!!!!!!!");
 		for (let i = 0; i < this.allQuestions.length; i++) {
 			if ("selected" in this.allQuestions[i]) {
@@ -118,8 +93,6 @@ export class QuizComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
-
 
 	}
 
