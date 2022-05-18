@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataPersistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220512185154_change_nochapter_type")]
-    partial class change_nochapter_type
+    [Migration("20220518162531_tables")]
+    partial class tables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,31 +23,6 @@ namespace DataPersistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Common.Entities.Answer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("IsCorrect")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("Answers");
-                });
-
             modelBuilder.Entity("Common.Entities.Question", b =>
                 {
                     b.Property<int>("Id")
@@ -55,6 +30,26 @@ namespace DataPersistence.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("A")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("B")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("C")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("D")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("QuizId")
                         .HasColumnType("int");
@@ -94,7 +89,7 @@ namespace DataPersistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("QuizId")
+                    b.Property<int>("NoChapter")
                         .HasColumnType("int");
 
                     b.Property<string>("Text")
@@ -102,8 +97,6 @@ namespace DataPersistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("QuizId");
 
                     b.ToTable("StickyNotes");
                 });
@@ -145,17 +138,6 @@ namespace DataPersistence.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Common.Entities.Answer", b =>
-                {
-                    b.HasOne("Common.Entities.Question", "Question")
-                        .WithMany("Answers")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Question");
-                });
-
             modelBuilder.Entity("Common.Entities.Question", b =>
                 {
                     b.HasOne("Common.Entities.Quiz", "Quiz")
@@ -167,27 +149,9 @@ namespace DataPersistence.Migrations
                     b.Navigation("Quiz");
                 });
 
-            modelBuilder.Entity("Common.Entities.StickyNote", b =>
-                {
-                    b.HasOne("Common.Entities.Quiz", "Quiz")
-                        .WithMany("StickyNotes")
-                        .HasForeignKey("QuizId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Quiz");
-                });
-
-            modelBuilder.Entity("Common.Entities.Question", b =>
-                {
-                    b.Navigation("Answers");
-                });
-
             modelBuilder.Entity("Common.Entities.Quiz", b =>
                 {
                     b.Navigation("Questions");
-
-                    b.Navigation("StickyNotes");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,62 @@
+<body>
+
+    <div class="title-section">
+        <div class="title">
+            Leadership for beginners
+        </div>
+        <div class="subtitle">
+            How to manage culture and knowledge in dynamic organizations
+        </div>
+        <button mat-raised-button class="change-button" (click)="onLogin()">Login</button>
+    </div>
+
+    <div class="form-section">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <h2>Hello !</h2>
+        
+            <mat-form-field class="field">
+                <mat-label>email</mat-label>
+                <input matInput type="email" pattern=".+@+.+\.com" placeholder="name@example.com" formControlName="email"
+                    required>
+                <mat-error *ngIf="form.controls['email'].touched">Email is required</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="field">
+                <mat-label>password</mat-label>
+                <input matInput type="password" formControlName="password"  required>
+                <mat-error *ngIf="form.controls['password'].touched">Password is required</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="field">
+                <mat-label>firstName</mat-label>
+                <input matInput type="text" placeholder="firstName" formControlName="firstName"
+                    required>
+                <mat-error *ngIf="form.controls['firstName'].touched">First name is required</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="field">
+                <mat-label>lastName</mat-label>
+                <input matInput type="text" formControlName="lastName"  required>
+                <mat-error *ngIf="form.controls['lastName'].touched">Last name is required</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="field">
+                <mat-label>role</mat-label>
+                <input matInput type="text" placeholder="role" formControlName="role"
+                    required>
+                <mat-error *ngIf="form.controls['role'].touched">Role is required</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="field">
+                <mat-label>nickName</mat-label>
+                <input matInput type="text" formControlName="nickName"  required>
+                <mat-error *ngIf="form.controls['nickName'].touched">Nickname is required</mat-error>
+            </mat-form-field>
+            <br>
+            <button [disabled]="form.status !== 'VALID'" type="submit" mat-raised-button
+                class="register-button">Register</button>
+        </form>
+    </div>
+    
+
+</body>
