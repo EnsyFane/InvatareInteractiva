@@ -1,0 +1,24 @@
+.flashcard-page-container{
+    margin: 4vh auto;
+    display: block;
+    width: 80%;
+}
+
+.show-flashcards{
+    width: 80%;
+    margin:10px auto;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.controls-container{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    margin-bottom: 5vh;
+}
+
+.control-pag{
+    margin-right: 12vw;
+}

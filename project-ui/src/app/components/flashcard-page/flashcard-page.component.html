@@ -1,1 +1,13 @@
-<p>flashcard-page works!</p>
+<header></header>
+<div class="flashcard-page-container">
+
+        <ul class="show-flashcards">
+                <li *ngFor='let item of flashcards | paginate: { itemsPerPage: 2, currentPage: p, totalItems: totalLength }'> 
+                        <app-flashcard [flashcard]="item"></app-flashcard>
+                </li>
+        </ul>
+</div>
+<div class="controls-container">
+        <pagination-controls class="control-pag" (pageChange)="p = $event"></pagination-controls>
+</div>
+

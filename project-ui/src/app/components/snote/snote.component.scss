@@ -1,0 +1,10 @@
+.snote-cointainer{
+    margin: 4vh 0;
+    padding: 12px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    width: 12vw;
+    height: 26vh;
+    overflow-y: auto;
+    background: radial-gradient(ellipse at top, rgba(217, 221, 113, 0.7), transparent), radial-gradient(ellipse at bottom, rgba(244, 240, 127, 0.9), transparent);
+}

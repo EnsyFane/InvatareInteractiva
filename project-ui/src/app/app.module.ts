@@ -26,6 +26,10 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { FlashcardComponent } from './components/flashcard/flashcard.component';
+import { FlashcardPageComponent } from './components/flashcard-page/flashcard-page.component';
+import { SnoteComponent } from './components/snote/snote.component';
+import { SnotePageComponent } from './components/snote-page/snote-page.component';
 import { RegisterComponent } from './components/register/register.component';
 
 
@@ -39,7 +43,10 @@ import { RegisterComponent } from './components/register/register.component';
     ChapterPageComponent,
     ChapterComponent,
     QuizComponent,
-    RegisterComponent
+    FlashcardComponent,
+    FlashcardPageComponent,
+    SnoteComponent,
+    SnotePageComponent
   ],
   imports: [
     BrowserModule,

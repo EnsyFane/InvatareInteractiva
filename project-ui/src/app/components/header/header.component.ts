@@ -18,12 +18,6 @@ export class HeaderComponent {
   }, {
     name: 'Sticky Notes',
     link: '/notes'
-  }, {
-    name: 'Leaderboards',
-    link: '/leaderboards'
-  }, {
-    name: 'Friends',
-    link: '/friends'
   }]
 }
 
