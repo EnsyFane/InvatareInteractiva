@@ -3,9 +3,7 @@ import { Observable } from 'rxjs';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { QuestionClass } from './question-class';
 import { ToastrService } from 'ngx-toastr';
-
-
-
+import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
 	selector: 'app-root',
@@ -23,9 +21,22 @@ export class QuizComponent implements OnInit {
 	@ViewChild('questionForm') questionForm: any;
 	@ViewChild('questionTest') questionTest : any;
 
-	constructor( private toastr: ToastrService) { }
+	constructor( private toastr: ToastrService, private quizService: QuizService) { }
 
 	answerArray = [];
+
+	importedQuestions: any = this.quizService.getQuiz(1)
+	.subscribe(
+        (response) => {                           //next() callback
+          console.log('response received', response)
+		  this.importedQuestions = response;
+        },
+        (error) => {                              //error() callback
+          console.error('Request failed with error')
+        },
+        () => {                                   //complete() callback
+          console.error('Request completed')      //This is actually not needed 
+        })
 
 	allQuestions: any = [{
 		"id": 1,
@@ -74,6 +85,8 @@ export class QuizComponent implements OnInit {
 	}
 
 	startQuiz() {
+		console.log(this.importedQuestions);
+		console.log("!!!!!!!!!!!!!!!!!!!!!!!!!");
 		for (let i = 0; i < this.allQuestions.length; i++) {
 			if ("selected" in this.allQuestions[i]) {
 				delete this.allQuestions[i]["selected"];
