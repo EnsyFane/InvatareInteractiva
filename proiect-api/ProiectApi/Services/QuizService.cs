@@ -27,15 +27,8 @@ namespace Services
         {
             var quiz = _map.Map<QuizDto>(await _context.Quizzes.FirstOrDefaultAsync(x => x.NoChapter == noChapter));
             var questions = _map.Map<List<QuestionDto>>(await _context.Questions.Where(x => x.Quiz.Id == quiz.Id).ToListAsync());
-            List<AnswerDto> answers = new List<AnswerDto>();
-            foreach (var q in questions)
-            {
-                var ans = _map.Map<List<AnswerDto>>(await _context.Answers.Where(x => x.Question.Id == q.Id).ToListAsync());
-                q.Answers = ans;
-            }
             quiz.Questions = questions;
             return quiz;
         }
-
     }
 }
