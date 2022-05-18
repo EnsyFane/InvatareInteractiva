@@ -5,11 +5,8 @@ import { FlashcardPageComponent } from './components/flashcard-page/flashcard-pa
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { QuizComponent } from './components/quiz/quiz.component';
-<<<<<<< HEAD
 import { SnotePageComponent } from './components/snote-page/snote-page.component';
-=======
 import { RegisterComponent } from './components/register/register.component';
->>>>>>> 9a5268521c0f8a03951dea6149cadd8794958ec6
 
 export const routes: Routes = [{
   path: '',
