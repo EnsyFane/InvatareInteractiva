@@ -53,4 +53,8 @@ export class LoginComponent implements OnInit {
     this.form.reset();
   }
 
+  register(): void {
+    this.router.navigate(['register']);
+  }
+
 }

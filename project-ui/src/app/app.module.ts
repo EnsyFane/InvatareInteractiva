@@ -26,6 +26,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     HeaderComponent,
     ChapterPageComponent,
     ChapterComponent,
-    QuizComponent
+    QuizComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
