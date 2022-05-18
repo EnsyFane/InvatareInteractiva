@@ -1,5 +1,7 @@
 <header></header>
-
+<div class="button-wrapper">
+    <button (click)="onAddClick()"> Add a new note</button>
+</div>
 <div class="chapter-page-container">
     <ul class="afisare-capitole">
         <li *ngFor='let item of chapters | paginate: { itemsPerPage: 1, currentPage: p, totalItems: totalLength }'> 
@@ -9,8 +11,30 @@
         <!-- <app-chapter [chapter]={{item}}></app-chapter> -->
     </ul>
     <div class="controls-container">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls class="control-pag" (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>
+
+<div class="form-wrapper">
+    
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="addState" autocomplete="off">
+        <h2>Add a new note</h2>
+        <mat-form-field class="field">
+            <mat-label>Text</mat-label>
+            <input matInput type="text" formControlName="text" required>
+            <mat-error *ngIf="form.controls['text'].touched">Text is required</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="field">
+            <mat-label>NoChapter</mat-label>
+            <input matInput type="number" formControlName="noChapter"  required>
+            <mat-error *ngIf="form.controls['noChapter'].touched">NoChapter is required</mat-error>
+        </mat-form-field>
+        <br>
+        <button [disabled]="form.status !== 'VALID'" type="submit" mat-raised-button>Add</button>
+    </form>
+</div>
+
+
 
 

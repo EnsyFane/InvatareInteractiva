@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Chapter } from 'src/app/data-types/chapter';
+import { StickyNote } from 'src/app/data-types/snote';
+import { SnoteService } from 'src/app/services/snote.service';
+import { PopupComponent } from '../popup/popup.component';
 @Component({
   selector: 'app-chapter-page',
   templateUrl: './chapter-page.component.html',
@@ -25,9 +30,44 @@ export class ChapterPageComponent implements OnInit {
 
    chapters: any =[];
    totalLength!: number;
+   addState:boolean=false;
    p:number=0;
+   form = this.formBuilder.group({
+    text: ['', Validators.required],
+    noChapter: ['', Validators.required]
+  })
 
-  constructor() { }
+  onSubmit(){
+    let stickyNoteForm : StickyNote ={text: this.form.value.text, noChapter: this.form.value.noChapter};
+
+    this.snoteService.addStickyNote(stickyNoteForm).subscribe({
+      next: data => {
+          if (data === null){
+            const dialogConfig = new MatDialogConfig();
+            dialogConfig.autoFocus = true;
+            dialogConfig.width = '30%';
+            dialogConfig.panelClass = 'dialog';
+            dialogConfig.data = {title: "Add Error", text: "Invalid credentials!"};
+            this.dialog.open(PopupComponent, dialogConfig);
+          }
+          else{
+            this.addState=!this.addState;
+          }
+      },
+      error: error => {
+          console.log('There was an error!'+error.errorMessage);
+      }
+    });
+    this.form.reset();
+    
+  }
+
+
+  onAddClick(){
+    this.addState=!this.addState;
+  }
+
+  constructor(private formBuilder: FormBuilder, private snoteService:SnoteService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.chapters.push(this.chapter);

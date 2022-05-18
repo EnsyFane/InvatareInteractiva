@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Flashcard } from 'src/app/data-types/flashcard';
 
 @Component({
   selector: 'app-flashcard',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlashcardComponent implements OnInit {
 
+  @Input() flashcard!: Flashcard;
   constructor() { }
 
   ngOnInit(): void {

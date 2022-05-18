@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChapterPageComponent } from './components/chapter-page/chapter-page.component';
+import { FlashcardPageComponent } from './components/flashcard-page/flashcard-page.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { SnotePageComponent } from './components/snote-page/snote-page.component';
 
 export const routes: Routes = [{
   path: '',
@@ -25,10 +27,10 @@ export const routes: Routes = [{
     component: QuizComponent
 }, {
   path: 'flashcards',
-    component: HomeComponent
+    component: FlashcardPageComponent
 }, {
   path: 'notes',
-    component: HomeComponent
+    component: SnotePageComponent
 }, {
   path: 'leaderboards',
     component: HomeComponent
