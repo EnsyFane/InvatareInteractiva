@@ -1,6 +1,9 @@
 <header></header>
 <div class="button-wrapper">
     <button (click)="onAddClick()"> Add a new note</button>
+    <div class="chapter-to-quizz-btn-wrapper">
+        <button id="to-quizz-btn" value="quizz" (click)="goToQuizzPage()">Quizz</button>
+    </div>
 </div>
 <div class="chapter-page-container">
     <ul class="afisare-capitole">
@@ -11,7 +14,7 @@
         <!-- <app-chapter [chapter]={{item}}></app-chapter> -->
     </ul>
     <div class="controls-container">
-        <pagination-controls class="control-pag" (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls class="control-pag" (pageChange)="p = $event" (pageChange)="pageChange($event)"></pagination-controls>
     </div>
 </div>
 

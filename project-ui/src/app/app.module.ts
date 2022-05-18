@@ -46,7 +46,8 @@ import { RegisterComponent } from './components/register/register.component';
     FlashcardComponent,
     FlashcardPageComponent,
     SnoteComponent,
-    SnotePageComponent
+    SnotePageComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
