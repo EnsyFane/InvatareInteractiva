@@ -10,9 +10,6 @@ export class HeaderComponent {
     name: 'Gain Knowledge',
     link: '/knowledge'
   }, {
-    name: 'Quizzes',
-    link: '/quizzes'
-  }, {
     name: 'Flashcards',
     link: '/flashcards'
   }, {
